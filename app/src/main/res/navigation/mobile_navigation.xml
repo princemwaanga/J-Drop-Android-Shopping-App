@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.myapp.ui.products.ProductFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_cart"
+            app:destination="@id/navigation_cart"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_productDetailFragment"
+            app:destination="@id/navigation_productDetailFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_cart"
+        android:name="com.example.myapp.ui.products.CartFragment"
+        android:label="@string/title_Cart"
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_navigation_cart_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_navigation_cart_to_navigation_building"
+            app:destination="@id/navigation_building"
+            app:popUpTo="@id/navigation_building"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_navigation_cart_to_navigation_CheckOut"
+            app:destination="@id/navigation_CheckOut" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_building"
+        android:name="com.example.myapp.ui.eStore.BuildingFragment"
+        android:label="@string/title_EStore"
+        tools:layout="@layout/fragment_building" >
+        <action
+            android:id="@+id/action_navigation_building_to_navigation_cart"
+            app:destination="@id/navigation_cart" />
+        <action
+            android:id="@+id/action_navigation_building_to_navigation_productDetailFragment"
+            app:destination="@id/navigation_productDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_productDetailFragment"
+        android:name="com.example.myapp.ui.products.ProductDetailFragment"
+        android:label="Product Details"
+        tools:layout="@layout/fragment_product_detail" >
+        <action
+            android:id="@+id/action_navigation_productDetailFragment_to_navigation_cart"
+            app:destination="@id/navigation_cart"
+            app:launchSingleTop="false"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_navigation_productDetailFragment_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.example.myapp.ui.me.LoginFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_navigation_notifications_to_navigation_success"
+            app:destination="@id/navigation_success" />
+        <action
+            android:id="@+id/action_navigation_notifications_to_navigation_register"
+            app:destination="@id/navigation_register" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_success"
+        android:name="com.example.myapp.ui.me.SuccessFragment"
+        android:label="Success"
+        tools:layout="@layout/fragment_success" >
+        <action
+            android:id="@+id/action_navigation_success_to_navigation_cart"
+            app:destination="@id/navigation_cart" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_register"
+        android:name="com.example.myapp.ui.me.RegisterFragment"
+        android:label="Register"
+        tools:layout="@layout/fragment_register" />
+
+    <fragment
+        android:id="@+id/navigation_CheckOut"
+        android:name="com.example.myapp.ui.products.CheckOutFragment"
+        android:label="CheckOut"
+        tools:layout="@layout/fragment_check_out" >
+        <action
+            android:id="@+id/action_navigation_CheckOut_to_navigation_cart"
+            app:destination="@id/navigation_cart"
+            app:popUpTo="@id/navigation_cart"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+</navigation>
