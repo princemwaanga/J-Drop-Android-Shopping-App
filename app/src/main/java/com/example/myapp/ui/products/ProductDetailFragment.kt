@@ -22,6 +22,7 @@ class ProductDetailFragment : Fragment() {
     private val binding get() = _binding!!
     private val cartViewModel : CartViewModel by viewModels()
     private val productViewModel: ProductViewModel by viewModels()
+    private lateinit var id : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,29 +67,17 @@ class ProductDetailFragment : Fragment() {
                 .into(binding.ivProductDetailImage)
         }
 
-        var recProduct = Product("non", "non", "non", 0.0,"non",R.mipmap.icon_round)
+        var recProduct = Product(id, binding.tvProductDetailName.text.toString(), binding.tvProductDetailDescription.text.toString() , binding.tvProductDetailPrice.text.toString().toDouble(),"image",binding.ivProductDetailImage.id)
         binding.btnDetailsAddToCart.setOnClickListener{
-            if(getProductById(productViewModel.productList,
-                binding.tvProductDetailName.text.toString()
-            ) != null){
-                recProduct = getProductById(productViewModel.productList,
-                    binding.tvProductDetailName.text.toString())!!
-            }else if (getProductById(productViewModel.buildingList,
-                    binding.tvProductDetailName.text.toString()
-                ) != null){
-                recProduct = getProductById(productViewModel.productList,
-                    binding.tvProductDetailName.text.toString())!!
-            }
+            
             cartViewModel.addItem(CartItem(recProduct, 1))
         }
-
-//        binding.btnDetailsAddToCart.setOnClickListener{
-//            cartViewModel.addItem(CartItem(recievedProduct, 1))
-//        }
+        
     }
-    fun getProductById(products:List<Product>, name: String): Product?{
-        return products.find { it.name == name }
-    }
+    // Search function
+//    fun getProductById(products:List<Product>, name: String): Product?{
+//        return products.find { it.name == name }
+//    }
 
 
 
